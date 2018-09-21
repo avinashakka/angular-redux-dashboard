@@ -1,0 +1,18 @@
+<div class="parent-container">
+  <mat-card>
+    <mat-card-subtitle>
+      Search usage patterns for IP:
+      <input matInput placeholder="IP" [(ngModel)]="patternForIp" name="ip">
+      <button mat-button color="primary" (click)="init()">Search</button>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="pattern" *ngIf="pattern && pattern.rows">
+        <ng-container *ngFor="let row of pattern.rows">
+          <div class="pattern-row">
+              <app-pattern-row [row]="row"></app-pattern-row>
+          </div>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

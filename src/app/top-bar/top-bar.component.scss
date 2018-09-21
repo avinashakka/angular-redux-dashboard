@@ -1,0 +1,11 @@
+.navbar {
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 16px;
+    color: #444642;
+    display: flex;
+    flex-direction: row;
+
+    .app-navbar {
+        background-color: #f8f9f7;
+    }
+}

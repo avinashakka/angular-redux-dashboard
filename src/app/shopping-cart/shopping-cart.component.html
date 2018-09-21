@@ -1,0 +1,57 @@
+<mat-toolbar class="toolbar" color="primary">
+  <span>
+      <a class="home" routerLink="/default" routerLinkActive="active">
+        <button mat-stroked-button>Home</button>
+      </a>
+  </span>
+  <span>Shopping Cart using redux for state management</span>
+  <span>
+    <button mat-stroked-button (click)="openDialog()">Cart</button>
+  </span>
+</mat-toolbar>
+
+<div class="table-container" *ngIf="store && store.length > 0">
+    <table mat-table [dataSource]="store">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef> Category </th>
+          <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="inventory">
+          <th mat-header-cell *matHeaderCellDef> Inventory </th>
+          <td mat-cell *matCellDef="let element"> {{element.inventory}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cart">
+            <th mat-header-cell *matHeaderCellDef> My Cart Status </th>
+            <td mat-cell *matCellDef="let element"> {{getCount(element.id)}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Add/Remove from my Cart</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button class="mat-mini-fab mat-warn" (click)="decrease(element.id, element.price)">-</button>
+              <button mat-fab-mini class="mat-mini-fab mat-primary" (click)="increase(element.id, element.price)">+</button>
+            </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </div>

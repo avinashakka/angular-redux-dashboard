@@ -3,9 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-starter-app": {
-      "root": "src/client/",
-      "sourceRoot": "src/client/",
+    "test-app": {
+      "root": "",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -13,17 +13,19 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-starter-app",
-            "index": "src/client/index.html",
-            "main": "src/client/main.ts",
-            "polyfills": "src/client/polyfills.ts",
-            "tsConfig": "src/client/tsconfig.app.json",
+            "outputPath": "dist/test-app",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/client/favicon.ico",
-              "src/client/assets"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
-              "src/client/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -31,8 +33,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/client/environments/environment.ts",
-                  "with": "src/client/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -50,37 +52,39 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-starter-app:build",
-            "proxyConfig": "proxy.conf.json",
+            "browserTarget": "test-app:build",
             "port": 3000,
-            "host": "0.0.0.0"
+            "host": "0.0.0.0",
+            "proxyConfig": "proxy.conf.js"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-starter-app:build:production"
+              "browserTarget": "test-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-starter-app:build"
+            "browserTarget": "test-app:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/client/test.ts",
-            "polyfills": "src/client/polyfills.ts",
-            "tsConfig": "src/client/tsconfig.spec.json",
-            "karmaConfig": "src/client/karma.conf.js",
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/client/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [],
             "assets": [
-              "src/client/favicon.ico",
-              "src/client/assets"
+              "src/favicon.ico",
+              "src/assets"
             ]
           }
         },
@@ -88,8 +92,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/client/tsconfig.app.json",
-              "src/client/tsconfig.spec.json"
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -98,7 +102,7 @@
         }
       }
     },
-    "ng-starter-app-e2e": {
+    "test-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -106,11 +110,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng-starter-app:serve"
+            "devServerTarget": "test-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ng-starter-app:serve:production"
+              "devServerTarget": "test-app:serve:production"
             }
           }
         },
@@ -126,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "ng-starter-app"
+  "defaultProject": "test-app"
 }

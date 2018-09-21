@@ -1,0 +1,10 @@
+.pattern-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+}
+
+.pattern-row > div {
+    flex: 1;
+}

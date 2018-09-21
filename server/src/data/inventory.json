@@ -1,0 +1,15 @@
+[{
+    "id": "1",
+    "name": "Bread",
+    "category": "Food",
+    "price": "3.99",
+    "inventory": "34"
+  },
+  {
+    "id": "2",
+    "name": "Chair",
+    "category": "Furniture",
+    "price": "45.99",
+    "inventory": "20"
+  }
+]

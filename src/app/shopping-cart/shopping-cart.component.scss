@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+}
+.toolbar {
+    display: inline-flex;
+    justify-content: space-between;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    text-decoration: none;
+    color: grey;
+}
